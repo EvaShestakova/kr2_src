@@ -1,4 +1,7 @@
 #include "Header.h"
+#include "Temp.h"
+
+class Temp;
 
 void CVector::Clean() { delete[] v; SetZero(); }
 void CVector::SetZero() { v = NULL; n = 0; }
@@ -58,9 +61,9 @@ CVector CVector::operator-(const CVector& b) {
 	}
 }
 double& CVector::operator[](int i) const{
-	if (i < 0 || i >= n) {
+	if (i < 0 || i>=n) {
 		printf("Error.Incorrect index\n");
-		return v[0];
+		throw - 4;
 	}
 	return v[i];
 }
@@ -74,4 +77,12 @@ double CVector::operator*(const CVector& b) {
 		for (int i = 0; i < n; i++) res+=v[i]*b[i];
 		return res;
 	}
+}
+
+
+Temp CVector::operator[](int i) {
+	if (i < 0) {
+		throw - 1;
+	}
+	return Temp(this, i);
 }

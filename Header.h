@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
-
+class Temp;
 void AutoTest();
 
 class CVector {
@@ -23,4 +23,7 @@ public:
 	CVector operator-(const CVector& b);
 	double& operator[](int i) const;
 	double operator*(const CVector& b);
+	Temp operator[](int i);
+
+	friend class Temp;
 };
